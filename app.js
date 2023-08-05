@@ -22,3 +22,11 @@ const división = function (primerNum, segundoNum) {
 const porcentaje = function (primerNum, segundoNum) {
     return (primerNum * segundoNum) / 100;
 };
+
+const exponenciación = function(primerNum, segundoNum) {
+    let resultado = 1;
+    for(let i = 1; i <= segundoNum; i++){
+        resultado *= primerNum;
+    }
+    return resultado;
+}
