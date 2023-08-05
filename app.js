@@ -7,3 +7,7 @@ const suma = function (primerNum, segundoNum) {
 const resta = function (primerNum, segundoNum) {
     return primerNum - segundoNum;
 };
+
+const multiplicación = function (primerNum, segundoNum) {
+    return primerNum * segundoNum;
+};
