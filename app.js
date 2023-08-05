@@ -39,3 +39,29 @@ const divisiónModular = function(primerNum, segundoNum) {
 let primerNum;
 let operador;
 let segundoNum;
+
+// Función de llamada a operaciones
+function operate(primerNum, operador, segundoNum){
+    switch (operador) {
+        case "+":
+            return suma(primerNum, segundoNum);
+    
+        case "-":
+            return resta(primerNum, segundoNum);
+        
+        case "x" || "X":
+            return multiplicación(primerNum, segundoNum);
+        
+        case "/":
+            return división(primerNum, segundoNum);
+
+        case "%":
+            return porcentaje(primerNum, segundoNum);
+
+        case "^":
+            return exponenciación(primerNum, segundoNum);
+
+        case "mod":
+            return divisiónModular(primerNum, segundoNum);
+    }
+}
