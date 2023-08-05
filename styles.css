@@ -4,6 +4,31 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+}
+
+/* Tamaño de titulo */
+h1 {
+    font-size: 28px;
+}
+
+/* Tamaño de calculadora */
+#calculadora {
+    width: 310px;
+    height: 410px;
+}
+
+/* Tamaño de pantalla */
+#pantalla {
+    border: solid 1px blue;
+    width: 100%;
+    height: 100px;
+}
+
+/* Tamaño de botones */
+button {
+    font-size: 30px;
+    width: 73px;
+    height: 50px;
 }
