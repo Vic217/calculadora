@@ -11,3 +11,10 @@ const resta = function (primerNum, segundoNum) {
 const multiplicación = function (primerNum, segundoNum) {
     return primerNum * segundoNum;
 };
+
+const división = function (primerNum, segundoNum) {
+    if (segundoNum === 0){
+        return console.error("Operación indefinida");
+    }
+    return primerNum / segundoNum;
+};
