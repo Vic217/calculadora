@@ -63,5 +63,8 @@ function operate(primerNum, operador, segundoNum){
 
         case "mod":
             return divisiónModular(primerNum, segundoNum);
+
+        default:
+            return console.error("Operación no valida");
     }
 }
