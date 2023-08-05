@@ -1,4 +1,4 @@
-// Funciones de operadociones matemáticas
+// Funciones de operaciones matemáticas
 
 const suma = function (primerNum, segundoNum) {
     return primerNum + segundoNum;
@@ -17,4 +17,8 @@ const división = function (primerNum, segundoNum) {
         return console.error("Operación indefinida");
     }
     return primerNum / segundoNum;
+};
+
+const porcentaje = function (primerNum, segundoNum) {
+    return (primerNum * segundoNum) / 100;
 };
