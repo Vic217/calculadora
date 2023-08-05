@@ -30,3 +30,7 @@ const exponenciación = function(primerNum, segundoNum) {
     }
     return resultado;
 }
+
+const divisiónModular = function(primerNum, segundoNum) {
+    return primerNum % segundoNum;
+}
