@@ -29,8 +29,13 @@ const exponenciación = function(primerNum, segundoNum) {
         resultado *= primerNum;
     }
     return resultado;
-}
+};
 
 const divisiónModular = function(primerNum, segundoNum) {
     return primerNum % segundoNum;
-}
+};
+
+// Variables para operaciones
+let primerNum;
+let operador;
+let segundoNum;
