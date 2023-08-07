@@ -1,38 +1,38 @@
 // Funciones de operaciones matemáticas
 
 const suma = function (primerNum, segundoNum) {
-    return primerNum + segundoNum;
+    return Number(primerNum) + Number(segundoNum);
 };
 
 const resta = function (primerNum, segundoNum) {
-    return primerNum - segundoNum;
+    return Number(primerNum) - Number(segundoNum);
 };
 
 const multiplicación = function (primerNum, segundoNum) {
-    return primerNum * segundoNum;
+    return Number(primerNum) * Number(segundoNum);
 };
 
 const división = function (primerNum, segundoNum) {
-    if (segundoNum === 0){
+    if (Number(segundoNum) === 0){
         return console.error("Operación indefinida");
     }
-    return primerNum / segundoNum;
+    return Number(primerNum) / Number(segundoNum);
 };
 
 const porcentaje = function (primerNum, segundoNum) {
-    return (primerNum * segundoNum) / 100;
+    return (Number(primerNum) * Number(segundoNum)) / 100;
 };
 
 const exponenciación = function(primerNum, segundoNum) {
     let resultado = 1;
-    for(let i = 1; i <= segundoNum; i++){
-        resultado *= primerNum;
+    for(let i = 1; i <= Number(segundoNum); i++){
+        resultado *= Number(primerNum);
     }
     return resultado;
 };
 
 const divisiónModular = function(primerNum, segundoNum) {
-    return primerNum % segundoNum;
+    return Number(primerNum) % Number(segundoNum);
 };
 
 // Variables para operaciones
@@ -81,6 +81,8 @@ const botonSeis = document.getElementById("seis");
 const botonSiete = document.getElementById("siete");
 const botonOcho = document.getElementById("ocho");
 const botonNueve = document.getElementById("nueve");
+const botonPunto = document.getElementById("punto");
+let arrPantalla = [];
 
 // Agregar el valor del botón en la pantalla
 botonCero.addEventListener("click", (e) => {
@@ -121,4 +123,13 @@ botonOcho.addEventListener("click", (e) => {
 
 botonNueve.addEventListener("click", (e) => {
     pantalla.innerText += 9;
+});
+
+botonPunto.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo.includes("."))){
+        return;
+    }else{
+        pantalla.innerText += ".";
+        arrPantalla.push(".");
+    }
 });
