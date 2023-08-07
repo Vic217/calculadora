@@ -242,7 +242,6 @@ botonResultado.addEventListener("click", (e) => {
         arrPantalla.pop();
         pantalla.innerText = "";
     }else if(resultadoEnPantalla.textContent == "Resultado" && operador != ""){
-        console.log("ENTRE");
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+1);
         let valorFinal = operate(0, operador, Number(segundoNum));
