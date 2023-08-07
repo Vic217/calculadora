@@ -147,3 +147,76 @@ botonPunto.addEventListener("click", (e) => {
         arrPantalla.push(".");
     }
 });
+
+// Agregar el valor del operador
+botonSuma.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+        return;
+    }else{
+        arrPantalla.unshift("+");
+        pantalla.innerText += "+";
+    }
+});
+
+botonResta.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+        return;
+    }else{
+        arrPantalla.unshift("-");
+        pantalla.innerText += "-";
+    }
+});
+
+botonMultiplicacion.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+        return;
+    }else{
+        pantalla.innerText += "X";
+        arrPantalla.push("X");
+    }
+});
+
+botonDivision.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+        return;
+    }else{
+        pantalla.innerText += "/";
+        arrPantalla.push("/");
+    }
+});
+
+botonExponenciacion.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+        return;
+    }else{
+        pantalla.innerText += "^";
+        arrPantalla.push("^");
+    }
+});
+
+botonPorcentaje.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+        return;
+    }else{
+        pantalla.innerText += "%";
+        arrPantalla.push("%");
+    }
+});
+
+botonModulo.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+        return;
+    }else{
+        pantalla.innerText += "mod";
+        arrPantalla.push("mod");
+    }
+});
+
+botonResultado.addEventListener("click", (e) => {
+    if (arrPantalla.some(arreglo => arreglo.includes("="))){
+        return;
+    }else{
+        pantalla.innerText += "=";
+        arrPantalla.push("=");
+    }
+});
