@@ -250,7 +250,7 @@ botonResultado.addEventListener("click", (e) => {
             let indice = segundoNum.indexOf(operador);
             segundoNum = segundoNum.slice(indice+3);
             let valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
-            resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+            resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
             arrPantalla.pop();
             pantalla.innerText = "";
         } else{
@@ -259,7 +259,7 @@ botonResultado.addEventListener("click", (e) => {
             let indice = segundoNum.indexOf(operador);
             segundoNum = segundoNum.slice(indice+1);
             let valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
-            resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+            resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
             arrPantalla.pop();
             pantalla.innerText = "";
         }
@@ -267,14 +267,14 @@ botonResultado.addEventListener("click", (e) => {
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+3);
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
-        resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+        resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
         arrPantalla.pop();
         pantalla.innerText = "";
     }else{
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+1);
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
-        resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+        resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
         arrPantalla.pop();
         pantalla.innerText = "";
     }
