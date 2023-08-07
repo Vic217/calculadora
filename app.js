@@ -233,11 +233,11 @@ botonResultado.addEventListener("click", (e) => {
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+3);
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
-        console.log(valorFinal);
+        resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
     }else{
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+1);
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
-        console.log(valorFinal);
+        resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
     }
 });
