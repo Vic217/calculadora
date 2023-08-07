@@ -279,6 +279,11 @@ botonResultado.addEventListener("click", (e) => {
         pantalla.innerText = "";
     }
     puntos.pop();
+    if (resultadoEnPantalla.textContent.length > 26){
+        console.log("Entre");
+        const tamResultado = document.querySelector("p#valor");
+        tamResultado.style.fontSize = "15px";
+    }
 });
 
 // Funcionamiento a botones de borrado
