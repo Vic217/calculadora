@@ -1,38 +1,38 @@
 // Funciones de operaciones matemáticas
 
 const suma = function (primerNum, segundoNum) {
-    return Number(primerNum) + Number(segundoNum);
+    return primerNum + segundoNum;
 };
 
 const resta = function (primerNum, segundoNum) {
-    return Number(primerNum) - Number(segundoNum);
+    return primerNum - segundoNum;
 };
 
 const multiplicación = function (primerNum, segundoNum) {
-    return Number(primerNum) * Number(segundoNum);
+    return primerNum * segundoNum;
 };
 
 const división = function (primerNum, segundoNum) {
-    if (Number(segundoNum) === 0){
+    if (segundoNum === 0){
         return console.error("Operación indefinida");
     }
-    return Number(primerNum) / Number(segundoNum);
+    return primerNum / segundoNum;
 };
 
 const porcentaje = function (primerNum, segundoNum) {
-    return (Number(primerNum) * Number(segundoNum)) / 100;
+    return (primerNum * segundoNum) / 100;
 };
 
 const exponenciación = function(primerNum, segundoNum) {
     let resultado = 1;
-    for(let i = 1; i <= Number(segundoNum); i++){
-        resultado *= Number(primerNum);
+    for(let i = 1; i <= segundoNum; i++){
+        resultado *= primerNum;
     }
     return resultado;
 };
 
 const divisiónModular = function(primerNum, segundoNum) {
-    return Number(primerNum) % Number(segundoNum);
+    return primerNum % segundoNum;
 };
 
 // Variables para operaciones
@@ -49,7 +49,7 @@ function operate(primerNum, operador, segundoNum){
         case "-":
             return resta(primerNum, segundoNum);
         
-        case "x" || "X":
+        case "X":
             return multiplicación(primerNum, segundoNum);
         
         case "/":
@@ -71,6 +71,7 @@ function operate(primerNum, operador, segundoNum){
 
 // Variables de control
 const pantalla = document.getElementById("operacion");
+let resultadoEnPantalla = document.getElementById("valor");
 const botonCero = document.getElementById("cero");
 const botonUno = document.getElementById("uno");
 const botonDos = document.getElementById("dos");
@@ -153,8 +154,10 @@ botonSuma.addEventListener("click", (e) => {
     if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
         return;
     }else{
-        arrPantalla.unshift("+");
+        primerNum = Number(pantalla.textContent);
+        arrPantalla.push("+");
         pantalla.innerText += "+";
+        operador = "+";
     }
 });
 
@@ -162,8 +165,10 @@ botonResta.addEventListener("click", (e) => {
     if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
         return;
     }else{
-        arrPantalla.unshift("-");
+        primerNum = Number(pantalla.textContent);
+        arrPantalla.push("-");
         pantalla.innerText += "-";
+        operador = "-";
     }
 });
 
@@ -171,8 +176,10 @@ botonMultiplicacion.addEventListener("click", (e) => {
     if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
         return;
     }else{
+        primerNum = Number(pantalla.textContent);
         pantalla.innerText += "X";
         arrPantalla.push("X");
+        operador = "X";
     }
 });
 
@@ -180,8 +187,10 @@ botonDivision.addEventListener("click", (e) => {
     if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
         return;
     }else{
+        primerNum = Number(pantalla.textContent);
         pantalla.innerText += "/";
         arrPantalla.push("/");
+        operador = "/";
     }
 });
 
@@ -189,8 +198,10 @@ botonExponenciacion.addEventListener("click", (e) => {
     if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
         return;
     }else{
+        primerNum = Number(pantalla.textContent);
         pantalla.innerText += "^";
         arrPantalla.push("^");
+        operador = "^";
     }
 });
 
@@ -198,8 +209,10 @@ botonPorcentaje.addEventListener("click", (e) => {
     if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
         return;
     }else{
+        primerNum = Number(pantalla.textContent);
         pantalla.innerText += "%";
         arrPantalla.push("%");
+        operador = "%";
     }
 });
 
@@ -207,16 +220,24 @@ botonModulo.addEventListener("click", (e) => {
     if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
         return;
     }else{
+        primerNum = Number(pantalla.textContent);
         pantalla.innerText += "mod";
         arrPantalla.push("mod");
+        operador = "mod";
     }
 });
 
 botonResultado.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo.includes("="))){
-        return;
+    segundoNum = pantalla.textContent;
+    if (operador == "mod"){
+        let indice = segundoNum.indexOf(operador);
+        segundoNum = segundoNum.slice(indice+3);
+        let valorFinal = operate(primerNum, operador, Number(segundoNum));
+        console.log(valorFinal);
     }else{
-        pantalla.innerText += "=";
-        arrPantalla.push("=");
+        let indice = segundoNum.indexOf(operador);
+        segundoNum = segundoNum.slice(indice+1);
+        let valorFinal = operate(primerNum, operador, Number(segundoNum));
+        console.log(valorFinal);
     }
 });
