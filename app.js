@@ -14,7 +14,7 @@ const multiplicación = function (primerNum, segundoNum) {
 
 const división = function (primerNum, segundoNum) {
     if (segundoNum === 0){
-        return console.error("Operación indefinida");
+        return resultadoEnPantalla.innerText = "Valor infinito 🧐";
     }
     return primerNum / segundoNum;
 };
@@ -231,16 +231,42 @@ botonResultado.addEventListener("click", (e) => {
     segundoNum = pantalla.textContent;
     if(operador == ""){
         resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
+        arrPantalla.pop();
+        pantalla.innerText = "";
+    }else if(pantalla.textContent[0] == operador[0]){
+        if (operador == "mod"){
+            let nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
+            primerNum = resultadoEnPantalla.textContent.slice(nuevoIndice+1);
+            let indice = segundoNum.indexOf(operador);
+            segundoNum = segundoNum.slice(indice+3);
+            let valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
+            resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+            arrPantalla.pop();
+            pantalla.innerText = "";
+        } else{
+            let nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
+            primerNum = resultadoEnPantalla.textContent.slice(nuevoIndice+1);
+            let indice = segundoNum.indexOf(operador);
+            segundoNum = segundoNum.slice(indice+1);
+            let valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
+            resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+            arrPantalla.pop();
+            pantalla.innerText = "";
+        }
     }else if (operador == "mod"){
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+3);
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
         resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+        arrPantalla.pop();
+        pantalla.innerText = "";
     }else{
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+1);
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
         resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+        arrPantalla.pop();
+        pantalla.innerText = "";
     }
 });
 
@@ -255,4 +281,11 @@ del.addEventListener("click", (e) => {
         operador = "";
     }
     pantalla.innerText = datosEnPantalla.join("");
+});
+
+c.addEventListener("click", (e) => {
+    pantalla.innerText = "";
+    operador = "";
+    arrPantalla.pop();
+    resultadoEnPantalla.innerText = "Resultado";
 });
