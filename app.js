@@ -229,7 +229,9 @@ botonModulo.addEventListener("click", (e) => {
 
 botonResultado.addEventListener("click", (e) => {
     segundoNum = pantalla.textContent;
-    if (operador == "mod"){
+    if(operador == ""){
+        resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
+    }else if (operador == "mod"){
         let indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+3);
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
@@ -240,4 +242,17 @@ botonResultado.addEventListener("click", (e) => {
         let valorFinal = operate(primerNum, operador, Number(segundoNum));
         resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
     }
+});
+
+// Funcionamiento a botones de borrado
+del.addEventListener("click", (e) => {
+    let eliminar;
+    let datosEnPantalla = pantalla.textContent
+    datosEnPantalla = datosEnPantalla.split("");
+    eliminar = datosEnPantalla.pop();
+    if (eliminar == operador){
+        arrPantalla.pop();
+        operador = "";
+    }
+    pantalla.innerText = datosEnPantalla.join("");
 });
