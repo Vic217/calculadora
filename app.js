@@ -241,6 +241,14 @@ botonResultado.addEventListener("click", (e) => {
         resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
         arrPantalla.pop();
         pantalla.innerText = "";
+    }else if(resultadoEnPantalla.textContent == "Resultado" && operador != ""){
+        console.log("ENTRE");
+        let indice = segundoNum.indexOf(operador);
+        segundoNum = segundoNum.slice(indice+1);
+        let valorFinal = operate(0, operador, Number(segundoNum));
+        resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
+        arrPantalla.pop();
+        pantalla.innerText = "";
     }else if (operador == undefined){
         resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
     }else if(pantalla.textContent[0] == operador[0]){
