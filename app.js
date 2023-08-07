@@ -84,6 +84,7 @@ const botonOcho = document.getElementById("ocho");
 const botonNueve = document.getElementById("nueve");
 const botonPunto = document.getElementById("punto");
 let arrPantalla = [];
+let puntos = [];
 
 // Variables de operaciones
 const botonSuma = document.getElementById("suma");
@@ -141,11 +142,11 @@ botonNueve.addEventListener("click", (e) => {
 });
 
 botonPunto.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo.includes("."))){
-        return;
-    }else{
+    if (puntos[0] != "." ){
+        puntos.push(".");
         pantalla.innerText += ".";
-        arrPantalla.push(".");
+    }else{
+        return;
     }
 });
 
@@ -158,6 +159,7 @@ botonSuma.addEventListener("click", (e) => {
         arrPantalla.push("+");
         pantalla.innerText += "+";
         operador = "+";
+        puntos.pop();
     }
 });
 
@@ -169,6 +171,7 @@ botonResta.addEventListener("click", (e) => {
         arrPantalla.push("-");
         pantalla.innerText += "-";
         operador = "-";
+        puntos.pop();
     }
 });
 
@@ -180,6 +183,7 @@ botonMultiplicacion.addEventListener("click", (e) => {
         pantalla.innerText += "X";
         arrPantalla.push("X");
         operador = "X";
+        puntos.pop();
     }
 });
 
@@ -191,6 +195,7 @@ botonDivision.addEventListener("click", (e) => {
         pantalla.innerText += "/";
         arrPantalla.push("/");
         operador = "/";
+        puntos.pop();
     }
 });
 
@@ -202,6 +207,7 @@ botonExponenciacion.addEventListener("click", (e) => {
         pantalla.innerText += "^";
         arrPantalla.push("^");
         operador = "^";
+        puntos.pop();
     }
 });
 
@@ -213,6 +219,7 @@ botonPorcentaje.addEventListener("click", (e) => {
         pantalla.innerText += "%";
         arrPantalla.push("%");
         operador = "%";
+        puntos.pop();
     }
 });
 
@@ -224,6 +231,7 @@ botonModulo.addEventListener("click", (e) => {
         pantalla.innerText += "mod";
         arrPantalla.push("mod");
         operador = "mod";
+        puntos.pop();
     }
 });
 
@@ -233,6 +241,8 @@ botonResultado.addEventListener("click", (e) => {
         resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
         arrPantalla.pop();
         pantalla.innerText = "";
+    }else if (operador == undefined){
+        resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
     }else if(pantalla.textContent[0] == operador[0]){
         if (operador == "mod"){
             let nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
@@ -268,6 +278,7 @@ botonResultado.addEventListener("click", (e) => {
         arrPantalla.pop();
         pantalla.innerText = "";
     }
+    puntos.pop();
 });
 
 // Funcionamiento a botones de borrado
