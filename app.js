@@ -84,6 +84,20 @@ const botonNueve = document.getElementById("nueve");
 const botonPunto = document.getElementById("punto");
 let arrPantalla = [];
 
+// Variables de operaciones
+const botonSuma = document.getElementById("suma");
+const botonResta = document.getElementById("resta");
+const botonMultiplicacion = document.getElementById("multiplicación");
+const botonDivision = document.getElementById("división");
+const botonExponenciacion = document.getElementById("exponenciación");
+const botonPorcentaje = document.getElementById("porcentaje");
+const botonModulo = document.getElementById("modulo");
+const botonResultado = document.getElementById("resultado");
+
+// Variables para borrar
+const del = document.getElementById("borrar");
+const c = document.getElementById("limpiar");
+
 // Agregar el valor del botón en la pantalla
 botonCero.addEventListener("click", (e) => {
     pantalla.innerText += 0;
