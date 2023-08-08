@@ -159,7 +159,7 @@ botonResultado.addEventListener("click", () => {
     pantalla.innerText = "";
     puntos.pop();
 
-    resultadoEnPantalla.textContent.length > 26 ? tamResultado.style.fontSize = "15px" : tamResultado.style.fontSize = "20px";
+    resultadoEnPantalla.textContent.length > 26 ? tamResultado.style.fontSize = "18px" : tamResultado.style.fontSize = "24px";
 });
 
 // Funcionamiento a botones de borrado
@@ -180,5 +180,5 @@ c.addEventListener("click", (e) => {
     operador = "";
     arrPantalla.pop();
     resultadoEnPantalla.innerText = "Resultado";
-    tamResultado.style.fontSize = "20px";
+    tamResultado.style.fontSize = "24px";
 });
