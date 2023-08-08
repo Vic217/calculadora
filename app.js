@@ -36,7 +36,7 @@ const divisiónModular = function(primerNum, segundoNum) {
 };
 
 // Variables para operaciones
-let primerNum;
+let primerNum = 0;
 let operador;
 let segundoNum;
 
@@ -85,6 +85,8 @@ const botonNueve = document.getElementById("nueve");
 const botonPunto = document.getElementById("punto");
 let arrPantalla = [];
 let puntos = [];
+let indice;
+let valorFinal;
 
 // Variables de operaciones
 const botonSuma = document.getElementById("suma");
@@ -242,45 +244,35 @@ botonResultado.addEventListener("click", (e) => {
         arrPantalla.pop();
         pantalla.innerText = "";
     }else if(resultadoEnPantalla.textContent == "Resultado" && operador != ""){
-        let indice = segundoNum.indexOf(operador);
-        segundoNum = segundoNum.slice(indice+1);
-        let valorFinal = operate(0, operador, Number(segundoNum));
+        indice = segundoNum.indexOf(operador);
+        if(operador == "mod"){
+            segundoNum = segundoNum.slice(indice+3)
+        }else{
+            segundoNum = segundoNum.slice(indice+1);
+        }
+        valorFinal = operate(primerNum, operador, Number(segundoNum));
         resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
         arrPantalla.pop();
         pantalla.innerText = "";
     }else if (operador == undefined){
         resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
     }else if(pantalla.textContent[0] == operador[0]){
+        let nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
+        primerNum = resultadoEnPantalla.textContent.slice(nuevoIndice+1);
+        indice = segundoNum.indexOf(operador);
         if (operador == "mod"){
-            let nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
-            primerNum = resultadoEnPantalla.textContent.slice(nuevoIndice+1);
-            let indice = segundoNum.indexOf(operador);
             segundoNum = segundoNum.slice(indice+3);
-            let valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
-            resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
-            arrPantalla.pop();
-            pantalla.innerText = "";
-        } else{
-            let nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
-            primerNum = resultadoEnPantalla.textContent.slice(nuevoIndice+1);
-            let indice = segundoNum.indexOf(operador);
+        }else{
             segundoNum = segundoNum.slice(indice+1);
-            let valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
-            resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
-            arrPantalla.pop();
-            pantalla.innerText = "";
         }
-    }else if (operador == "mod"){
-        let indice = segundoNum.indexOf(operador);
-        segundoNum = segundoNum.slice(indice+3);
-        let valorFinal = operate(primerNum, operador, Number(segundoNum));
+        valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
         resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
         arrPantalla.pop();
         pantalla.innerText = "";
     }else{
-        let indice = segundoNum.indexOf(operador);
+        indice = segundoNum.indexOf(operador);
         segundoNum = segundoNum.slice(indice+1);
-        let valorFinal = operate(primerNum, operador, Number(segundoNum));
+        valorFinal = operate(primerNum, operador, Number(segundoNum));
         resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
         arrPantalla.pop();
         pantalla.innerText = "";
