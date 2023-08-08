@@ -13,10 +13,12 @@ const multiplicación = function (primerNum, segundoNum) {
 };
 
 const división = function (primerNum, segundoNum) {
-    if (segundoNum === 0){
-        return resultadoEnPantalla.innerText = "Valor infinito 🧐";
+    if(segundoNum == 0){
+        alert("Estas intentando calcular un numero infinito!!! \nLimpia la pantalla!!");
+        return resultadoEnPantalla.innerText = "Valor Infinito 🧐";
+    }else{
+        return primerNum / segundoNum;
     }
-    return primerNum / segundoNum;
 };
 
 const porcentaje = function (primerNum, segundoNum) {
@@ -61,7 +63,7 @@ function operate(primerNum, operador, segundoNum){
             return divisiónModular(primerNum, segundoNum);
 
         default:
-            return console.error("Operación no valida");
+            return pantalla.textContent;
     }
 }
 
@@ -82,6 +84,7 @@ const botonResultado = document.getElementById("resultado");
 // Variables para borrar
 const del = document.getElementById("borrar");
 const c = document.getElementById("limpiar");
+const tamResultado = document.querySelector("p#valor");
 
 // Agregar el valor de los botones en la pantalla
 numeros.forEach(numero =>{
@@ -114,52 +117,49 @@ btnOperaciones.forEach(operacion => {
     });
 });
 
-botonResultado.addEventListener("click", (e) => {
+botonResultado.addEventListener("click", () => {
     segundoNum = pantalla.textContent;
-    if(operador == ""){
-        resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
-        arrPantalla.pop();
-        pantalla.innerText = "";
-    }else if(resultadoEnPantalla.textContent == "Resultado" && operador != ""){
-        indice = segundoNum.indexOf(operador);
-        if(operador == "mod"){
-            segundoNum = segundoNum.slice(indice+3)
-        }else{
-            segundoNum = segundoNum.slice(indice+1);
-        }
-        valorFinal = operate(primerNum, operador, Number(segundoNum));
-        resultadoEnPantalla.innerText = "Resultado: " + valorFinal;
-        arrPantalla.pop();
-        pantalla.innerText = "";
-    }else if (operador == undefined){
-        resultadoEnPantalla.innerText = "Resultado: " + pantalla.textContent;
-    }else if(pantalla.textContent[0] == operador[0]){
-        let nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
-        primerNum = resultadoEnPantalla.textContent.slice(nuevoIndice+1);
-        indice = segundoNum.indexOf(operador);
-        if (operador == "mod"){
-            segundoNum = segundoNum.slice(indice+3);
-        }else{
-            segundoNum = segundoNum.slice(indice+1);
-        }
-        valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
-        resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
-        arrPantalla.pop();
-        pantalla.innerText = "";
-    }else{
-        indice = segundoNum.indexOf(operador);
-        segundoNum = segundoNum.slice(indice+1);
-        valorFinal = operate(primerNum, operador, Number(segundoNum));
-        resultadoEnPantalla.innerText = "Resultado: " + (Math.round(valorFinal*10000)/(10000));
-        arrPantalla.pop();
-        pantalla.innerText = "";
+    let nuevoResultado = "";
+
+    switch (true) {
+        case operador === "":
+            nuevoResultado = pantalla.textContent;
+            break;
+
+        case resultadoEnPantalla.textContent === "Resultado" && operador !== "":
+            indice = segundoNum.indexOf(operador);
+            segundoNum = (operador === "mod") ? segundoNum.slice(indice + 3) : segundoNum.slice(indice + 1);
+            valorFinal = operate(primerNum, operador, Number(segundoNum));
+            nuevoResultado = valorFinal;
+            break;
+
+        case operador === undefined || operador === "":
+            nuevoResultado = pantalla.textContent;
+            break;
+
+        case pantalla.textContent[0] === operador[0]:
+            const nuevoIndice = resultadoEnPantalla.textContent.indexOf(" ");
+            primerNum = resultadoEnPantalla.textContent.slice(nuevoIndice + 1);
+            indice = segundoNum.indexOf(operador);
+            segundoNum = (operador === "mod") ? segundoNum.slice(indice + 3) : segundoNum.slice(indice + 1);
+            valorFinal = operate(Number(primerNum), operador, Number(segundoNum));
+            nuevoResultado = (Math.round(valorFinal * 10000) / 10000);
+            break;
+
+        default:
+            indice = segundoNum.indexOf(operador);
+            segundoNum = segundoNum.slice(indice + 1);
+            valorFinal = operate(primerNum, operador, Number(segundoNum));
+            nuevoResultado = (Math.round(valorFinal * 10000) / 10000);
+            break;
     }
+
+    resultadoEnPantalla.innerText = "Resultado: " + nuevoResultado;
+    arrPantalla.pop();
+    pantalla.innerText = "";
     puntos.pop();
-    if (resultadoEnPantalla.textContent.length > 26){
-        console.log("Entre");
-        const tamResultado = document.querySelector("p#valor");
-        tamResultado.style.fontSize = "15px";
-    }
+
+    resultadoEnPantalla.textContent.length > 26 ? tamResultado.style.fontSize = "15px" : tamResultado.style.fontSize = "20px";
 });
 
 // Funcionamiento a botones de borrado
@@ -180,4 +180,5 @@ c.addEventListener("click", (e) => {
     operador = "";
     arrPantalla.pop();
     resultadoEnPantalla.innerText = "Resultado";
+    tamResultado.style.fontSize = "20px";
 });
