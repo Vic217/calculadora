@@ -50,6 +50,9 @@ button {
 
 #operacion {
     margin: 12px;
+    overflow: hidden; /* Oculta el contenido que desborda */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto desborda */
+    max-width: 90%;
 }
 
 /* Centrado de teclado */
