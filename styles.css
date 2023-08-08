@@ -1,9 +1,4 @@
-/* Colores */
-body {
-    background-color: color-mix(in hsl, #101214 65%, #277488 15%);
-}
-
-/* Centrado general */
+/* Centrado general y estilos de color */
 body {
     height: 100vh;
     box-sizing: border-box;
@@ -11,6 +6,7 @@ body {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    background-color: color-mix(in hsl, #101214 65%, #277488 15%);
 }
 
 /* Tamaño de titulo */
@@ -132,4 +128,12 @@ p{
 
 #punto {
     background-color: #56a1b4;
+}
+
+button:hover, #resultado:hover, #borrar:hover, #limpiar:hover, #punto:hover{
+    background-color: #fd3122;
+}
+
+button:active, #resultado:active, #borrar:active, #limpiar:active, #punto:active {
+    background-color: #33fd22;
 }
