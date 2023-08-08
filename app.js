@@ -76,13 +76,7 @@ let indice;
 let valorFinal;
 
 // Variables de operaciones
-const botonSuma = document.getElementById("suma");
-const botonResta = document.getElementById("resta");
-const botonMultiplicacion = document.getElementById("multiplicación");
-const botonDivision = document.getElementById("división");
-const botonExponenciacion = document.getElementById("exponenciación");
-const botonPorcentaje = document.getElementById("porcentaje");
-const botonModulo = document.getElementById("modulo");
+const btnOperaciones = document.querySelectorAll(".btnOperaciones");
 const botonResultado = document.getElementById("resultado");
 
 // Variables para borrar
@@ -106,88 +100,18 @@ botonPunto.addEventListener("click", (e) => {
 });
 
 // Agregar el valor del operador
-botonSuma.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
-        return;
-    }else{
-        primerNum = Number(pantalla.textContent);
-        arrPantalla.push("+");
-        pantalla.innerText += "+";
-        operador = "+";
-        puntos.pop();
-    }
-});
-
-botonResta.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
-        return;
-    }else{
-        primerNum = Number(pantalla.textContent);
-        arrPantalla.push("-");
-        pantalla.innerText += "-";
-        operador = "-";
-        puntos.pop();
-    }
-});
-
-botonMultiplicacion.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
-        return;
-    }else{
-        primerNum = Number(pantalla.textContent);
-        pantalla.innerText += "X";
-        arrPantalla.push("X");
-        operador = "X";
-        puntos.pop();
-    }
-});
-
-botonDivision.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
-        return;
-    }else{
-        primerNum = Number(pantalla.textContent);
-        pantalla.innerText += "/";
-        arrPantalla.push("/");
-        operador = "/";
-        puntos.pop();
-    }
-});
-
-botonExponenciacion.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
-        return;
-    }else{
-        primerNum = Number(pantalla.textContent);
-        pantalla.innerText += "^";
-        arrPantalla.push("^");
-        operador = "^";
-        puntos.pop();
-    }
-});
-
-botonPorcentaje.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
-        return;
-    }else{
-        primerNum = Number(pantalla.textContent);
-        pantalla.innerText += "%";
-        arrPantalla.push("%");
-        operador = "%";
-        puntos.pop();
-    }
-});
-
-botonModulo.addEventListener("click", (e) => {
-    if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
-        return;
-    }else{
-        primerNum = Number(pantalla.textContent);
-        pantalla.innerText += "mod";
-        arrPantalla.push("mod");
-        operador = "mod";
-        puntos.pop();
-    }
+btnOperaciones.forEach(operacion => {
+    operacion.addEventListener("click", (e) => {
+        if (arrPantalla.some(arreglo => arreglo == ("+") || ("-") || ("X") || ("/") || ("%") || ("^") || ("mod"))){
+            return;
+        }else{
+            primerNum = Number(pantalla.textContent);
+            arrPantalla.push(e.target.innerText);
+            pantalla.innerText += e.target.innerText;
+            operador = e.target.innerText;
+            puntos.pop();
+        }
+    });
 });
 
 botonResultado.addEventListener("click", (e) => {
