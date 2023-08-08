@@ -24,11 +24,7 @@ const porcentaje = function (primerNum, segundoNum) {
 };
 
 const exponenciación = function(primerNum, segundoNum) {
-    let resultado = 1;
-    for(let i = 1; i <= segundoNum; i++){
-        resultado *= primerNum;
-    }
-    return resultado;
+    return primerNum ** segundoNum;
 };
 
 const divisiónModular = function(primerNum, segundoNum) {
