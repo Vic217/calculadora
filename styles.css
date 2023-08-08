@@ -1,3 +1,8 @@
+/* Colores */
+body {
+    background-color: color-mix(in hsl, #101214 65%, #277488 15%);
+}
+
 /* Centrado general */
 body {
     height: 100vh;
@@ -11,19 +16,24 @@ body {
 /* Tamaño de titulo */
 h1 {
     font-size: 28px;
+    font-family:'Lucida Sans';
 }
 
 /* Tamaño de calculadora */
 #calculadora {
     width: 310px;
     height: 410px;
+    border: 10px solid color-mix(in hsl, #437066 70%, #dd2156 30%);
+    border-radius: 2%;
+    background-color: color-mix(in hsl, #437066 70%, #dd2156 30%);
 }
 
 /* Tamaño de pantalla */
 #pantalla {
-    border: solid 1px blue;
+    background-color:#DCE2E7;
     width: 100%;
     height: 100px;
+    border-radius: 2%;
 }
 
 /* Tamaño de botones */
@@ -31,28 +41,30 @@ button {
     font-size: 22px;
     width: 55px;
     height: 45px;
+    border: 1px solid color-mix(in hsl, #221e33 70%, #2d3130 30%);
 }
 
 /* Centrado de pantalla */
 #pantalla {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: flex-end;
 }
 
 /* Alineación de items */
 #valor {
     align-self:center;
-    margin-top: 12px;
-    font-size: 20px;
+    margin-top: 8px;
+    font-size: 24px;
+    color: #062308;
 } 
 
 #operacion {
-    margin: 12px;
+    margin: 8px;
     overflow: hidden; /* Oculta el contenido que desborda */
     text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto desborda */
     max-width: 90%;
+    color: #062308;
 }
 
 /* Centrado de teclado */
@@ -64,6 +76,7 @@ button {
 
 #resultado {
     height: 120px;
+    background-color: color-mix(in hsl, #33fd22 60%, #333333 10%);
 }
 
 #numeros {
@@ -86,12 +99,37 @@ button {
 
 #borrar {
     width: 70px;
+    color: #ffffff;
+    background-color: #AC0000;
 }
 
 #limpiar {
     width: 70px;
+    color: #ffffff;
+    background-color: #AC0000;
 }
 
 #modulo {
     height: 120px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+p{
+    font-size: 24px;
+}
+
+.btnOperaciones {
+    background-color: #9DBFE7;
+}
+
+.btnNumerico {
+    background-color: #C8A1E8;
+}
+
+#punto {
+    background-color: #56a1b4;
 }
